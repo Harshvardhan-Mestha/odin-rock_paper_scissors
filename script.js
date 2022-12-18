@@ -16,16 +16,6 @@ function getComputerSelection(){
     if (rand <= 33){computerSelection = "rock";}
     if (rand > 33 && rand <= 66) {computerSelection = "paper";}
     if (rand>66 && rand <= 100){computerSelection = "scissors";}
-    //console.log("computer entered:" + computerSelection);
-    
-}
-
-function getPlayerSelection(){
-    playerSelection = window.prompt("Enter a valid input ('rock','paper', or 'scissors' case-insensitive):");
-    playerSelection = playerSelection.toLowerCase();
-    if (playerSelection != "rock" && playerSelection != "paper" && playerSelection != "scissors" ){getPlayerSelection();}
-    //console.log("player entered:" + playerSelection);
-
 }
 
 
@@ -47,48 +37,41 @@ function playRound(playerSelection,computerSelection){
         i++;
     }
 
-    //console.log(p,c,k);
+    comp_p.textContent = "Computer: " + computer_score;
+    play_p.textContent = "You: " + player_score;
 }
 
 function game(){
     
-
-
-    while(i<5){
         getComputerSelection();
-        getPlayerSelection();    
         playRound(playerSelection,computerSelection);
-        if (k!=0){
-            console.log("Results of Round: "+i+"\n\nComputer: "+computer_score+"\nPlayer: "+player_score+
-            "\n\nComputer Entered: "+computerSelection+"\nPlayer entered: "+playerSelection);
-
-            window.alert("Results of Round: "+i+"\n\nComputer: "+computer_score+"\nPlayer: "+player_score+
-            "\n\nComputer Entered: "+computerSelection+"\nPlayer entered: "+playerSelection);
-        }
-        else{
-            console.log("This round was a tie.");
-            window.alert("This round was a tie.");
-        }
+        comp_s.textContent = "Computer played: " + computerSelection;
+        play_s.textContent = "You played: " + playerSelection;
+        
+    if (computer_score == 5){
+        result.textContent = "Computer wins. :/";
+        instr.textContent = "Click the buttons to reset and play a new match.";
+        computer_score = 0;
+        player_score = 0;
+        
     }
-
-
-    if (computer_score == player_score){
-        console.log("This game was a tie.");
-        window.alert("This game was a tie.");
+    else if(player_score == 5){
+        result.textContent = "Congratulations! You Win! :)";
+        instr.textContent = "Click the buttons to reset and play a new match.";
+        computer_score = 0;
+        player_score = 0;
     }
-    else if (computer_score > player_score){
-        console.log("Computer wins. :/");
-        window.alert("Computer wins. :/");
-    }
-    else{
-        console.log("Congratulations! \nYou Win! :)");
-        window.alert("Congratulations! \nYou Win! :)");
-    }
+    else{result.textContent = "";instr.textContent = "";}
 
 }
 
+function getPlayerSelection(e){
+    playerSelection = e.target.id;
+    game();
+}
 
-game();
+const btns = document.querySelectorAll('button')
+btns.forEach(btn => btn.addEventListener('click', getPlayerSelection));
 
 
 
