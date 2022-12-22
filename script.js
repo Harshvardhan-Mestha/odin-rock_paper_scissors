@@ -51,6 +51,9 @@ function game(){
     if (computer_score == 5){
         result.textContent = "Computer wins. :/";
         instr.textContent = "Click the buttons to reset and play a new match.";
+        result.classList.remove('win');
+        result.classList.remove('lose');
+        result.classList.add('win');
         computer_score = 0;
         player_score = 0;
         
@@ -58,6 +61,9 @@ function game(){
     else if(player_score == 5){
         result.textContent = "Congratulations! You Win! :)";
         instr.textContent = "Click the buttons to reset and play a new match.";
+        result.classList.remove('win');
+        result.classList.remove('lose');
+        result.classList.add('lose');
         computer_score = 0;
         player_score = 0;
     }
@@ -70,8 +76,19 @@ function getPlayerSelection(e){
     game();
 }
 
+function btn_hover(e){
+    e.target.classList.add('hover');
+}
+
+function btn_hover_end(e){
+    e.target.classList.remove('hover');
+}
+
+
 const btns = document.querySelectorAll('button')
 btns.forEach(btn => btn.addEventListener('click', getPlayerSelection));
+btns.forEach(btn => btn.addEventListener('mouseenter', btn_hover));
+btns.forEach(btn => btn.addEventListener('mouseleave', btn_hover_end));
 
 
 

@@ -1,3 +1,50 @@
+body{
+    background-color:rgb(202, 207, 232);
+    text-align: center;
+    font-family: helvetica,arial;
+    font-size: 20px;
+    color: rebeccapurple;
+}
+
 button{
     background-color: orange;
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
+    color: darkgreen;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#btn_cntr{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+p{
+    font-weight: bold;
+    color: black;
+}
+
+h1{
+    color:darkslategrey;
+}
+
+.hover{
+    background-color:rgb(255, 191, 71);
+
+}
+
+.win{
+    color: red;
+    font-weight: bold;
+}
+.lose{
+    color: green;
+    font-weight: bold;
+}
+
+#instr{
+    color: black;
 }
